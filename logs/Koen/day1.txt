@@ -1,0 +1,10 @@
+14/06/2021 log Koen Ceton:
+
+Morning: 
+Read the module, follow the lecture
+
+Afternoon:
+Divide tasks. 
+Work on data preparation. 
+Clean dataset: One-hot encoding, drops and filtering.
+Split data into train and testing data.
