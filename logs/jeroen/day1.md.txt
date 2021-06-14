@@ -1,0 +1,11 @@
+JJ. Dijkmans
+
+Log day 1.
+Morning: 
+Read/lecture about info about project
+
+Afternoon: 
+Selected project Stroke
+Brainstorm about approach to supervised classification method.
+Decided to try stacking multiple classifiers (k-NN, Deep Neural Network and DecisionTree/Random Forest)
+Started with data preprocessing and creating basic models
