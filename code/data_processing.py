@@ -8,9 +8,10 @@ from sklearn.model_selection import train_test_split
 def prepare_data(path):
 
     """
-    function: cleans the stroke dataset
-    returns clean dataset
-    path = computer location of csv file
+    This function cleans the stroke csv dataset.
+    It returns the dataset cleaned as a pandas dataframe.
+    Parameters upon function call are the computer location of stroke csv file
+    (path).
     """
 
     # Load data into pandas dataframe
@@ -43,16 +44,21 @@ def prepare_data(path):
 def split_data(data, split_size=(0.7, 0.3)):
 
     """
-    function: splits the stroke dataset
+    This function splits the pandas dataframe for the stroke csv, given by
+    the prepare_data function.
 
-    data = clean pandas dataframe
-
-    split_size =  tuple of length 2 or 3.
-    1. tuple with 2 values: (training data, testing data) proportions in decimal.
-    returns 4 dataframes
-    2. tuple with 3 values: (training data, testing data, validation data) proportions in decimal.
-    returns 6 dataframes
-    Default: split_size = (0.7, 0.3)
+    Input: data = clean pandas dataframe
+    split_size =  tuple of length 2 or 3, with the values of the different
+    ratios that the dataset should be split up into summing up to 1.
+    Depending on split size, the following happens:
+    1. Tuple with 2 values: (training data, testing data) split, proportions in
+    decimal.
+    Returns 4 dataframes (train_data, test_data, train_labels, test_labels)
+    2. Tuple with 3 values: (training data, testing data, validation data) split,
+    proportions in decimal.
+    Returns 6 dataframes (train_data, test_data, validation_data, train_labels,
+    test_labels, validation_labels)
+    The default split_size is (0.7, 0.3) (70% training data, 30% testing data)
     """
     # Split_size check
     assert sum(split_size) == 1, 'The dataset should be split completely'
