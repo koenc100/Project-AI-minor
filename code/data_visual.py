@@ -1,10 +1,14 @@
 # File to visualize the dataset
 
-import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 from data_processing import prepare_data
+
+"""
+One better way to visualize the data is proptionally.
+So instead of plotting the 80+ people with a stroke, you plot it proportional to the 80+ people without a stroke
+"""
 
 # Prepare data: One-hot encoding, remove NaN, simplify column names
 data = prepare_data('healthcare-dataset-stroke-data.csv')
