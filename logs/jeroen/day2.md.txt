@@ -1,0 +1,13 @@
+JJ. Dijkmans
+
+Log day 2.
+Morning:
+After a short meeting I continued working on the decision tree and deep neural network basics.
+
+Afternoon:
+After we discovered that the data is very unbalanced, 
+I looked up some better metrics to evaluate our model and how to handle unbalanced data in general.
+We implemented the confusion matrix and balanced accuracy score to get better insight in model performance.
+Finished the day by writing the report for the basic model. 
+
+
