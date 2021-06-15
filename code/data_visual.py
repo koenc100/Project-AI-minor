@@ -1,8 +1,9 @@
-# visualize the data
+# File to visualize the dataset
 
-from data_prep import prepare_data
+import numpy as np
+import math
+import seaborn as sn
+import matplotlib.pyplot as plt
+from data_proccesing import prepare_data, split_data
 
-data, empty_data, labels_data, empty_labels = prepare_data('healthcare-dataset-stroke-data.csv', split_size=(1, 0))
-
-# print(data.info())
-print(labels_data)
+print(dir(data_procesing))
