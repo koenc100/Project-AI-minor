@@ -24,6 +24,9 @@ def prepare_data(path, split_size=(0.7, 0.3)):
     Default: split_size = (0.7, 0.3)
     """
 
+    # Split_size check
+    assert sum(split_size) == 1, 'The dataset should be split completely'
+
     # Load data into pandas dataframe
     data = pd.read_csv(path)
 
