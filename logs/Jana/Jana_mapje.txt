@@ -1,0 +1,11 @@
+14-06-2021
+
+Gedaan
+- Groepje gevormd
+- Gezorgd dat de data geopend kan worden
+- Data splitsen in test/training en features/labels
+
+Morgen
+- 9:30 overleggen over planning
+- data visualiseren voor algemeen beeld
+- 1 algoritme werkende krijgen
