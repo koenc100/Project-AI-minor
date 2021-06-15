@@ -1,0 +1,8 @@
+15/06/2021 log Koen Ceton:
+
+Morning: 
+finish the data preparation, put into usefull functions
+
+Afternoon:
+Work on data visualization. 
+Made 3 histograms to visualize the plots.
