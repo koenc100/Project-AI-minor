@@ -36,7 +36,7 @@ def prepare_data(path):
     # Clean column names
     data.columns = data.columns.str.lower().str.replace(' ','_')
 
-    # Remove rows with N\A values
+    # Remove rows with N/A values
     data.dropna(axis=0, inplace=True)
 
     return data
@@ -48,7 +48,7 @@ def split_data(data, split_size=(0.7, 0.3)):
     the prepare_data function.
 
     Input: data = clean pandas dataframe
-    split_size =  tuple of length 2 or 3, with the values of the different
+    split_size = tuple of length 2 or 3, with the values of the different
     ratios that the dataset should be split up into summing up to 1.
     Depending on split size, the following happens:
     1. Tuple with 2 values: (training data, testing data) split, proportions in
@@ -60,7 +60,7 @@ def split_data(data, split_size=(0.7, 0.3)):
     test_labels, validation_labels)
     The default split_size is (0.7, 0.3) (70% training data, 30% testing data)
     """
-    # Split_size check
+    # Check if the split_size is correct
     assert sum(split_size) == 1, 'The dataset should be split completely'
 
     # Split the data into target "y" and input "X"
@@ -70,12 +70,12 @@ def split_data(data, split_size=(0.7, 0.3)):
     # If the size of the split is in train and test data only
     if len(split_size) == 2:
 
-        # Split the data into 70% training and 30% testing
+        # Split the data into training and testing data and labels
         train_data, test_data, train_labels, test_labels = train_test_split(X, y, train_size=split_size[0], random_state=1265599650)
 
         return train_data, test_data, train_labels, test_labels
 
-    # If the split is into test, train and validation data
+    # If the tuple length for split is 3 split data into test, train and validation
     if len(split_size) == 3:
 
         # Split out the test data
