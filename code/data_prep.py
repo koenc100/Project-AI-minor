@@ -3,15 +3,9 @@
 # Import libraries
 import numpy as np
 import pandas as pd
-import math
-import statistics
-import matplotlib.pyplot as plt
-import seaborn as sn
-from IPython.display import display
 from sklearn.model_selection import train_test_split
 
 def prepare_data(path, split_size=(0.7, 0.3)):
-
     """
     Function that cleans and splits stroke dataset and uses the following
     input:
@@ -24,7 +18,7 @@ def prepare_data(path, split_size=(0.7, 0.3)):
     Default: split_size = (0.7, 0.3)
     """
 
-    # Split_size check
+    # Check if the given split_size is 1 in total
     assert sum(split_size) == 1, 'The dataset should be split completely'
 
     # Load data into pandas dataframe
@@ -39,20 +33,21 @@ def prepare_data(path, split_size=(0.7, 0.3)):
 
     # Drop not one-hot endcoded columns
     data = data.drop(['gender', 'ever_married', 'work_type', 'Residence_type',
-    'smoking_status', 'id'], axis=1)
+                      'smoking_status', 'id'], axis=1)
 
     # Create new dataframe with one-hot endcoded columns
     data = pd.concat([data, gender, ever_married, work_type, residence_type,
-    smoking_status], axis=1)
+                      smoking_status], axis=1)
 
     # Rename column names
     data = data.rename(columns={'Yes':'ever_married', 'No':'never_married',
-    'Unknown':'unknown_smoking_status', 'Other':'other_gender'})
+                                'Unknown':'unknown_smoking_status',
+                                'Other':'other_gender'})
 
-    # Clean column names
+    # Clean column names by replacing spaces capital letters
     data.columns = data.columns.str.lower().str.replace(' ','_')
 
-    # Remove rows with N\A values
+    # Remove rows with N/A values
     data.dropna(axis=0, inplace=True)
 
     # Split the data into target "y" and input "X"
@@ -62,9 +57,9 @@ def prepare_data(path, split_size=(0.7, 0.3)):
     # If the size of the split is in train and test data only
     if len(split_size) == 2:
 
-        # Split the data into 70% training and 30% testing
-        train_data, test_data, train_labels, test_labels = train_test_split(X,
-        y, train_size=split_size[0], random_state=1265599650)
+        # Split the data into training and testing
+        train_data, test_data, train_labels, test_labels = train_test_split(
+        X, y, train_size=split_size[0], random_state=1265599650)
 
         return train_data, test_data, train_labels, test_labels
 
@@ -72,22 +67,25 @@ def prepare_data(path, split_size=(0.7, 0.3)):
     if len(split_size) == 3:
 
         # Split out the test data
-        train_data, test_data, train_labels, test_labels  = train_test_split(X,
-        y, test_size=split_size[1], random_state=1)
+        train_data, test_data, train_labels, test_labels  = train_test_split(
+        X, y, test_size=split_size[1], random_state=1)
 
         # Calculate portion for validation data split
         split_val_size = split_size[2] /  (1 - split_size[1])
 
         # Split out the validation data
-        train_data, val_data, train_labels, val_labels = train_test_split(train_data, train_labels, test_size=split_val_size, random_state=2)
+        train_data, val_data, train_labels, val_labels = train_test_split(
+        train_data, train_labels, test_size=split_val_size, random_state=2)
 
         return train_data, test_data, val_data, train_labels, test_labels, val_labels
 
-train_data, test_data, train_labels, test_labels = prepare_data('healthcare-dataset-stroke-data.csv', split_size=(0.7, 0.3))
-train_data, test_data, val_data, train_labels, test_labels, val_labels = prepare_data('healthcare-dataset-stroke-data.csv', split_size=(0.5, 0.25, 0.25))
-
-# Print shapes of training and testing data
-print(f'shapes:\nTrain data: {train_data.shape}\nTest data: {test_data.shape}\nTrain labels: {train_labels.shape}\nTest labels: {test_labels.shape}')
-
-# Print info
-print(train_data.info())
+#TODO remove
+# train_data, test_data, train_labels, test_labels = prepare_data('healthcare-dataset-stroke-data.csv', split_size=(0.7, 0.3))
+# train_data, test_data, val_data, train_labels, test_labels, val_labels = prepare_data('healthcare-dataset-stroke-data.csv', split_size=(0.5, 0.25, 0.25))
+#
+# # Print shapes of training and testing data
+# print(f'shapes:\nTrain data: {train_data.shape}\nTest data: {test_data.shape}')
+# print(f'Train labels: {train_labels.shape}\nTest labels: {test_labels.shape}')
+#
+# # Print info
+# print(train_data.info())
