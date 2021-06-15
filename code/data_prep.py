@@ -13,14 +13,14 @@ from sklearn.model_selection import train_test_split
 def prepare_data(path, split_size=(0.7, 0.3)):
 
     """
-    function: cleans and splits stroke dataset
-
+    Function that cleans and splits stroke dataset and uses the following
+    input:
     path = computer location of csv file
-    split_size = either tuple of length 2 or 3.
-    1. tuple with 2 values: (training data, testing data) in decimal.
+    split_size = either tuple of length 2 or 3:
+    1. tuple with 2 values: (training data, testing data) in decimal,
     returns 4 dataframes
-    2. tuple with 3 values: (training data, testing data, validation data) in decimal.
-    returns 6 dataframes
+    2. tuple with 3 values: (training data, testing data, validation data) in
+    decimal, returns 6 dataframes
     Default: split_size = (0.7, 0.3)
     """
 
@@ -38,13 +38,16 @@ def prepare_data(path, split_size=(0.7, 0.3)):
     smoking_status = pd.get_dummies(data['smoking_status'])
 
     # Drop not one-hot endcoded columns
-    data = data.drop(['gender', 'ever_married', 'work_type', 'Residence_type', 'smoking_status', 'id'], axis=1)
+    data = data.drop(['gender', 'ever_married', 'work_type', 'Residence_type',
+    'smoking_status', 'id'], axis=1)
 
     # Create new dataframe with one-hot endcoded columns
-    data = pd.concat([data, gender, ever_married, work_type, residence_type, smoking_status], axis=1)
+    data = pd.concat([data, gender, ever_married, work_type, residence_type,
+    smoking_status], axis=1)
 
     # Rename column names
-    data = data.rename(columns={'Yes':'ever_married', 'No':'never_married', 'Unknown':'unknown_smoking_status', 'Other':'other_gender'})
+    data = data.rename(columns={'Yes':'ever_married', 'No':'never_married',
+    'Unknown':'unknown_smoking_status', 'Other':'other_gender'})
 
     # Clean column names
     data.columns = data.columns.str.lower().str.replace(' ','_')
@@ -60,7 +63,8 @@ def prepare_data(path, split_size=(0.7, 0.3)):
     if len(split_size) == 2:
 
         # Split the data into 70% training and 30% testing
-        train_data, test_data, train_labels, test_labels = train_test_split(X, y, train_size=split_size[0], random_state=1265599650)
+        train_data, test_data, train_labels, test_labels = train_test_split(X,
+        y, train_size=split_size[0], random_state=1265599650)
 
         return train_data, test_data, train_labels, test_labels
 
@@ -68,7 +72,8 @@ def prepare_data(path, split_size=(0.7, 0.3)):
     if len(split_size) == 3:
 
         # Split out the test data
-        train_data, test_data, train_labels, test_labels  = train_test_split(X, y, test_size=split_size[1], random_state=1)
+        train_data, test_data, train_labels, test_labels  = train_test_split(X,
+        y, test_size=split_size[1], random_state=1)
 
         # Calculate portion for validation data split
         split_val_size = split_size[2] /  (1 - split_size[1])
