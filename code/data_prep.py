@@ -10,22 +10,13 @@ import seaborn as sn
 from IPython.display import display
 from sklearn.model_selection import train_test_split
 
-def prepare_data(path, split_size=(0.7, 0.3)):
+def prepare_data(path):
 
     """
-    function: cleans and splits stroke dataset
-
+    function: cleans the stroke dataset
+    returns clean dataset
     path = computer location of csv file
-    split_size = either tuple of length 2 or 3.
-    1. tuple with 2 values: (training data, testing data) in decimal.
-    returns 4 dataframes
-    2. tuple with 3 values: (training data, testing data, validation data) in decimal.
-    returns 6 dataframes
-    Default: split_size = (0.7, 0.3)
     """
-
-    # Split_size check
-    assert sum(split_size) == 1, 'The dataset should be split completely'
 
     # Load data into pandas dataframe
     data = pd.read_csv(path)
@@ -51,6 +42,25 @@ def prepare_data(path, split_size=(0.7, 0.3)):
 
     # Remove rows with N\A values
     data.dropna(axis=0, inplace=True)
+
+    return data
+
+def split_data(data, split_size=(0.7, 0.3)):
+
+    """
+    function: splits the stroke dataset
+
+    data = clean pandas dataframe
+
+    split_size =  tuple of length 2 or 3.
+    1. tuple with 2 values: (training data, testing data) proportions in decimal.
+    returns 4 dataframes
+    2. tuple with 3 values: (training data, testing data, validation data) proportions in decimal.
+    returns 6 dataframes
+    Default: split_size = (0.7, 0.3)
+    """
+    # Split_size check
+    assert sum(split_size) == 1, 'The dataset should be split completely'
 
     # Split the data into target "y" and input "X"
     y = data['stroke']
@@ -78,11 +88,17 @@ def prepare_data(path, split_size=(0.7, 0.3)):
 
         return train_data, test_data, val_data, train_labels, test_labels, val_labels
 
-train_data, test_data, train_labels, test_labels = prepare_data('healthcare-dataset-stroke-data.csv', split_size=(0.7, 0.3))
-train_data, test_data, val_data, train_labels, test_labels, val_labels = prepare_data('healthcare-dataset-stroke-data.csv', split_size=(0.5, 0.25, 0.25))
+# Run only if script is main document
+if __name__ == '__main__':
 
-# Print shapes of training and testing data
-print(f'shapes:\nTrain data: {train_data.shape}\nTest data: {test_data.shape}\nTrain labels: {train_labels.shape}\nTest labels: {test_labels.shape}')
+    # Prepare the data
+    data = prepare_data('healthcare-dataset-stroke-data.csv')
 
-# Print info
-print(train_data.info())
+    # Split the data
+    train_data, test_data, train_labels, test_labels = split_data(data, split_size=(0.7, 0.3))
+
+    # Print shapes of training and testing data
+    print(f'\nShapes:\nTotal data: {data.shape}\nTrain data: {train_data.shape}\nTest data: {test_data.shape}\nTrain labels: {train_labels.shape}\nTest labels: {test_labels.shape}\n')
+
+    # Print info
+    print(train_data.info())
