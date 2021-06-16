@@ -5,30 +5,31 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-def prepare_data(path):
+def prepare_data(path, one_hot = True):
 
     """
     This function cleans the stroke csv dataset.
     It returns the dataset cleaned as a pandas dataframe.
     Parameters upon function call are the computer location of stroke csv file
-    (path).
+    (path) and a boolean for if data should be one-hot-encoded (default) or not.
     """
 
     # Load data into pandas dataframe
     data = pd.read_csv(path)
 
-    # Create dummies objects for one-hot encoded columns
-    gender = pd.get_dummies(data['gender'])
-    ever_married = pd.get_dummies(data['ever_married'])
-    work_type = pd.get_dummies(data['work_type'])
-    residence_type = pd.get_dummies(data['Residence_type'])
-    smoking_status = pd.get_dummies(data['smoking_status'])
+    if one_hot:
+        # Create dummies objects for one-hot encoded columns
+        gender = pd.get_dummies(data['gender'])
+        ever_married = pd.get_dummies(data['ever_married'])
+        work_type = pd.get_dummies(data['work_type'])
+        residence_type = pd.get_dummies(data['Residence_type'])
+        smoking_status = pd.get_dummies(data['smoking_status'])
 
-    # Drop not one-hot endcoded columns
-    data = data.drop(['gender', 'ever_married', 'work_type', 'Residence_type', 'smoking_status', 'id'], axis=1)
+        # Drop not one-hot endcoded columns
+        data = data.drop(['gender', 'ever_married', 'work_type', 'Residence_type', 'smoking_status', 'id'], axis=1)
 
-    # Create new dataframe with one-hot endcoded columns
-    data = pd.concat([data, gender, ever_married, work_type, residence_type, smoking_status], axis=1)
+        # Create new dataframe with one-hot endcoded columns
+        data = pd.concat([data, gender, ever_married, work_type, residence_type, smoking_status], axis=1)
 
     # Rename column names
     data = data.rename(columns={'Yes':'ever_married', 'No':'never_married', 'Unknown':'unknown_smoking_status', 'Other':'other_gender'})
