@@ -64,7 +64,7 @@ def proportion(data, column_name):
         # calculate ratio
         ratio_item = item_stroke / item_total
 
-        print(f'Ratio of subgroup {item}: {ratio_item}')
+        print(f'Ratio of subgroup {item}: {round(ratio_item, 5)}')
 
 # Run functions on columns
 proportion(data_cat, 'gender')
