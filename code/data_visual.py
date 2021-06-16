@@ -25,6 +25,7 @@ data = prepare_data('healthcare-dataset-stroke-data.csv')
 # Create subplot
 fig, axes = plt.subplots(2, 3, figsize=(20,10))
 
+# Make subtitle
 fig.suptitle('The strokes or nonstrokes for age, average glucose level and bmi')
 
 # Add 3 histogram plots to the subplot

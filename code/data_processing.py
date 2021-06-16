@@ -5,17 +5,17 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-def prepare_data(path, one_hot = True):
+def prepare_data(path, one_hot = True, binary = True):
 
     """
     This function cleans the stroke csv dataset.
     It returns the dataset cleaned as a pandas dataframe.
     Parameters upon function call are the computer location of stroke csv file
     (path) and a boolean for if data should be one-hot-encoded (default) or not.
-    """
 
-    # drop other
-    # rename gender, married and residence to 0 and 1 with replace
+    If one_hot is True, columns with more than 2 categories are one hot endcoded.
+    If binary is True, columns with 2 categories are replaced with binary numbers.
+    """
 
     # Load data into pandas dataframe
     data = pd.read_csv(path)
@@ -23,17 +23,19 @@ def prepare_data(path, one_hot = True):
     # Drop ID column
     data = data.drop(['id'], axis=1)
 
-    # Clean column names
-    data.columns = data.columns.str.lower().str.replace(' ','_')
-
-    print(data.columns)
-    
     # Remove rows with N/A values
     data.dropna(axis=0, inplace=True)
 
-    print(data.info())
+    # Drop 'other' sample
+    data = data[data.gender != 'Other']
+
+    if binary:
+
+        # Replace columns with two categories with binaries
+        data = data.replace({'Male': 1, 'Female': 0, 'Urban': 1, 'Rural': 0, 'Yes': 1, 'No': 0})
 
     if one_hot:
+
         # Create dummies objects for one-hot encoded columns
         work_type = pd.get_dummies(data['work_type'])
         smoking_status = pd.get_dummies(data['smoking_status'])
@@ -45,8 +47,10 @@ def prepare_data(path, one_hot = True):
         data = pd.concat([data, work_type, smoking_status], axis=1)
 
         # Rename column names
-        data = data.rename(columns={'unknown':'unknown_smoking_status'})
+        data = data.rename(columns={'Unknown':'unknown_smoking_status'})
 
+    # Clean column names
+    data.columns = data.columns.str.lower().str.replace(' ','_')
 
     return data
 
