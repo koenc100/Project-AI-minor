@@ -1,0 +1,11 @@
+JJ. Dijkmans
+
+Log day 3.
+Morning:
+We decided to check each others code and try to understand it and possibly make it better.
+Optimized both the preprocessing and created a get_metrics function that returns the evaluation metrics in a nice format.
+
+Afternoon:
+I worked mainly again on the k-Nearest Neighbors. I found out that there are ways to deal with categorical data in kNN too,
+so I implemented that in the model.
+We further had some discussion about ways to further optimize the Deep Neural Network in the future. 
