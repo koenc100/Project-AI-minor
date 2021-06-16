@@ -1,0 +1,8 @@
+16/06/2021 log Koen Ceton:
+
+Morning:
+Work on plots of quantative data. Finetune data_processing
+
+Afternoon:
+Finish data_visual and data_processing. 
+Upload plots and write about data analysis.
