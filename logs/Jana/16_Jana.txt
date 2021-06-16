@@ -1,0 +1,5 @@
+16-06-2021
+
+Lang gedaan over het visualiseren van de categorische data. 
+We willen graag dat er aan het plotje te zien is welke variabelen veel invloed hebben op een stroke/geen stroke
+Dit was heel veel uitproberen en knutselen met verschillen tussen functies.

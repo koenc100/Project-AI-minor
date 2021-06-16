@@ -1,0 +1,3 @@
+## Log wednesday week 1
+Today I worked on editing code Jeroen wrote for the Decision tree and Neural networks. I edited quite a lot, changing code to functions, adding documentation and comments and we implemented a function that could print the evaluation scores for the data smoothly for all models. For the neural networks, I added a figure. I also looked at the report.
+Tomorrow, I will be looking at the neural network and reading through the links Jeroen sent on the asymmetrical data we have.
