@@ -13,8 +13,10 @@ In the 3 plots beneath, the age, average glucose level and bmi are plotted cumul
 
 DISCUSSION:
 Clearly, the chances of having a stroke increase as the age increases.
-The plots of the avg. gl. level tell us that
-
+The plots of the avg. gl. level tell us that most stroke occur around 70.
+Proporionally to strokes not occuring, around 200, there is also a significant chance of having a stroke.
+The plots on bmi tell us that the bmi of a person has very little to do with the probability of having a stroke.
+The density distribution is more or less the same.
 """
 
 # Prepare data: One-hot encoding, remove NaN, simplify column names
