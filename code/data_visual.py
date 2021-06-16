@@ -21,7 +21,7 @@ def stroke_samples(name):
     return with_stroke[with_stroke !=0]
 
 def non_stroke_samples(name):
-    without_stroke = 4
+    without_stroke = data[data[]]
 
 # Proportional plot
 
