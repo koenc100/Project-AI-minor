@@ -43,14 +43,3 @@ axes[2].set_title('bmi for every stroke')
 axes[2].set_xlabel('bmi')
 
 plt.show()
-
-# create figures for categorical data
-data_cat = prepare_data('healthcare-dataset-stroke-data.csv', one_hot = False)
-sns.catplot(x = 'gender', y = "stroke", data = data_cat, kind = "bar")
-plt.show()
-
-sns.catplot(x = 'smoking_status', y = "stroke", data = data_cat, kind = "bar")
-plt.show()
-
-sns.histplot(data = data_cat, x = 'smoking_status', hue = 'stroke', multiple="stack")
-plt.show()
