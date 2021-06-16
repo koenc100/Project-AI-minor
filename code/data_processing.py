@@ -14,31 +14,39 @@ def prepare_data(path, one_hot = True):
     (path) and a boolean for if data should be one-hot-encoded (default) or not.
     """
 
+    # drop other
+    # rename gender, married and residence to 0 and 1 with replace
+
     # Load data into pandas dataframe
     data = pd.read_csv(path)
 
-    if one_hot:
-        # Create dummies objects for one-hot encoded columns
-        gender = pd.get_dummies(data['gender'])
-        ever_married = pd.get_dummies(data['ever_married'])
-        work_type = pd.get_dummies(data['work_type'])
-        residence_type = pd.get_dummies(data['Residence_type'])
-        smoking_status = pd.get_dummies(data['smoking_status'])
-
-        # Drop not one-hot endcoded columns
-        data = data.drop(['gender', 'ever_married', 'work_type', 'Residence_type', 'smoking_status', 'id'], axis=1)
-
-        # Create new dataframe with one-hot endcoded columns
-        data = pd.concat([data, gender, ever_married, work_type, residence_type, smoking_status], axis=1)
-
-    # Rename column names
-    data = data.rename(columns={'Yes':'ever_married', 'No':'never_married', 'Unknown':'unknown_smoking_status', 'Other':'other_gender'})
+    # Drop ID column
+    data = data.drop(['id'], axis=1)
 
     # Clean column names
     data.columns = data.columns.str.lower().str.replace(' ','_')
 
+    print(data.columns)
+    
     # Remove rows with N/A values
     data.dropna(axis=0, inplace=True)
+
+    print(data.info())
+
+    if one_hot:
+        # Create dummies objects for one-hot encoded columns
+        work_type = pd.get_dummies(data['work_type'])
+        smoking_status = pd.get_dummies(data['smoking_status'])
+
+        # Drop not one-hot endcoded columns
+        data = data.drop(['ever_married', 'work_type', 'smoking_status'], axis=1)
+
+        # Create new dataframe with one-hot endcoded columns
+        data = pd.concat([data, work_type, smoking_status], axis=1)
+
+        # Rename column names
+        data = data.rename(columns={'unknown':'unknown_smoking_status'})
+
 
     return data
 
