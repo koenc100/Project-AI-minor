@@ -1,0 +1,12 @@
+JJ. Dijkmans
+
+Log day 4.
+Morning:
+Started with a meeting to discuss the possibilities to improve all models, and continued searching for ways to deal with data imbalance.
+At 11.00 meeting with Tim about feedback on milestone 1. 
+
+Afternoon:
+Updating our report on milestone 1 based on the feedback took quite some time. We had to add some more output metrics which I implemented.
+I implemented specificity and sensitivity to our get_metrics function.
+Finally I started working on optimization of the deep neural network and found out a way to penalize false negatives stronger than false positives.
+
