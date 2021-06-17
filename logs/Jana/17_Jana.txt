@@ -1,0 +1,10 @@
+17-06-2021
+
+Vandaag heb ik samen met dominique het data preprocessen verbeterd.
+Dit bestond uit het normalizeren van de data, het vervangen van N/A waardes
+in BMI en het zorgen dat er genoeg data met stroke is in zowel training,
+test en validation. Dominique codeerde vooral en ik zocht handige functies
+of oude notebooks op.
+Verder heb ik veel aan het verslag gewerkt. Zo heb ik een begin gemaakt aan 
+data processing voor chaper 2 en heb ik het model analysis deel van 
+decision trees verbeterd.
