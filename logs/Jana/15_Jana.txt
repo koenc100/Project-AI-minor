@@ -1,0 +1,8 @@
+15-06-2021
+Jana
+
+Today I've written a great part of section one for chapter one.
+Furthermore, Koen and I finished the data preprocessing and I made a start at a quick data visualization.
+
+Usefull link for tomorrow:
+https://seaborn.pydata.org/tutorial/categorical.html
