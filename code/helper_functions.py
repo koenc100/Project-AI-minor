@@ -15,8 +15,8 @@ def get_metrics(true_labels, predictions, verbose=False):
         print(f'accuracy: {accuracy*100:.4f} % \n')
 
         print(f'balanced accuracy: {balanced_accuracy*100:.4f} %')
-        print(f'sensitivity: {sensitivity}')
-        print(f'specificity: {specificity} \n')
+        print(f'sensitivity: {sensitivity:.4f}')
+        print(f'specificity: {specificity:.4f} \n')
 
         print('confusion matrix: ')
         print(f'{conmat} \n')
