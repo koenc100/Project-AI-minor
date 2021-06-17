@@ -1,0 +1,9 @@
+17/06/2021 log Koen Ceton:
+
+Morning:
+Work on loss weights to neural network.
+Work on increasing true positives.
+
+Afternoon:
+Working on improving papar chapter one.
+Printing and plotting the usefull performance results of NN.
