@@ -1,0 +1,8 @@
+18-06-2021
+
+Vandaag heb ik me bezig gehouden met het verbeteren van de decision tree.
+Dit bestond uit het uitzoeken van pruning, het optimalizeren van de
+minimal split size en van de max depth. 
+
+Morgen ga ik waarschijnlijk verder met het uitzoeken van de beste depth
+door te kijken of een split een significante verbetering veroorzaakt.
