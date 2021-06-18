@@ -44,7 +44,6 @@ def prepare_data(path, one_hot = True, binary = True, normalize = True):
 
     # Create columns with binary values if the binary argument is true
     if binary:
-
         # Replace columns with two categories with binaries
         data = data.replace({'Male': 1, 'Female': 0, 'Urban': 1, 'Rural': 0,
                              'Yes': 1, 'No': 0})
@@ -146,6 +145,37 @@ def split_data(data, split_size=(0.7, 0.3)):
             stratify = train_labels)
 
         return train_data, test_data, val_data, train_labels, test_labels, val_labels
+
+def one_hot(data, columns):
+
+    """
+    Returns pandas dataframe with one hot encoded columns
+    data: data used
+    columns: list of strings of names of columns to one hot encode
+    """
+
+    # create dummie list
+    dummie_items = []
+
+    # loop over every column in column list
+    for column_name in columns:
+
+        # Create dummies objects for one-hot encoded columns
+        column_dummie = pd.get_dummies(data[column_name])
+
+        # append to list
+        dummie_items.apend(column_dummie)
+
+    # Drop not one-hot endcoded columns
+    data = data.drop(dummie_items, axis=1)
+
+    # Create new dataframe with one-hot endcoded columns
+    data = pd.concat([data + dummie_items], axis=1)
+
+    # Rename the unknown smoking status column
+    data = data.rename(columns={'Unknown':'unknown_smoking_status'})
+
+    return data
 
 # Run only if script is main document
 if __name__ == '__main__':

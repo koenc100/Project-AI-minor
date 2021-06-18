@@ -1,0 +1,16 @@
+JJ. Dijkmans
+
+Log day 5.
+
+During a morning meeting we discussed how to further work on the different models. 
+
+I have been only working on the deep neural network, besides having some discussion on the other models.
+Today I have been mainly working on the implementation of cross-validation on the Deep neural network model.
+This was a complex piece of code, especially finding good ways to store all the different metrics we use for our validation.
+
+I used the cross-validation to further search for optimal parameters for our model, such as the class weight.
+Some extra changes I made on the DNN pipeline were: 
+replacing all binary 0 values in categorical data to -1,
+adding a fixed pseudo-random state of the model weights, in order to better evaluate parameter changes.
+I helped writing the code for some data augmentations.
+
