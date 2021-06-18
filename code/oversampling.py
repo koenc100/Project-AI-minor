@@ -3,7 +3,7 @@
 #import imblearn
 #from imblearn.over_sampling import RandomOverSampler, SMOTENC
 import pandas as pd
-from data_processing import prepare_data, split_data
+from data_processing import prepare_data, split_data, one_hot
 import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
@@ -14,7 +14,9 @@ from imblearn.over_sampling import RandomOverSampler, SMOTENC
 
 data = prepare_data('healthcare-dataset-stroke-data.csv', one_hot = False, binary = True, normalize = True)
 
+
 train_data, test_data, train_labels, test_labels, = split_data(data, split_size=(0.999, 0.001))
+
 
 def smote_loop(data, labels, n_features, start, stop, step):
 
@@ -43,8 +45,14 @@ def smote_loop(data, labels, n_features, start, stop, step):
         smote_nc = SMOTENC(categorical_features = n_features, sampling_strategy = i)
 
         # create resampled data and labels
-        train_data_res, train_labels_res = smote_nc.fit_resample(data, labels)
+        train_data_res_t, train_labels_res = smote_nc.fit_resample(data, labels)
 
+        print(train_data_res_t.shape)
+
+        train_data_res = one_hot(train_data_res_t, ['work_type', 'smoking_status'])
+
+        print(train_data_res.shape)
+        
         # list with sampled data and  labels
         list_data.append(train_data_res)
         list_labels.append(train_labels_res)

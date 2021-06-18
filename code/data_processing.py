@@ -164,10 +164,10 @@ def one_hot(data, columns):
         column_dummie = pd.get_dummies(data[column_name])
 
         # append to list
-        dummie_items.apend(column_dummie)
+        dummie_items.append(column_dummie)
 
     # Drop not one-hot endcoded columns
-    data = data.drop(dummie_items, axis=1)
+    data = data.drop(columns, axis=1)
 
     # Create new dataframe with one-hot endcoded columns
     data = pd.concat([data + dummie_items], axis=1)
