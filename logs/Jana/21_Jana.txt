@@ -1,0 +1,3 @@
+21-06-2021
+
+Naast het verslag doorlezen en controleren op spellingsfouten heb ik code van de decision tree in een functie gezet en de secties daarover in het verslag geschreven.
