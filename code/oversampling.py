@@ -85,8 +85,8 @@ def smote_loop(data, labels, n_features, start, stop, step):
         list_labels.append(train_labels_res)
         list_ratio.append(i)
 
-        print(list_data[0].shape, ':data')
-
+        # shape list_data = 19 columns
+        
     return list_data, list_labels, list_ratio
 
 
