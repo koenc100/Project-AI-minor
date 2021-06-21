@@ -16,7 +16,7 @@ data_cat['heart_disease'].replace(to_replace = (0, 1), value = ('no', 'yes'), in
 data_cat['stroke'].replace(to_replace = (0, 1), value = ('no stroke', 'stroke'), inplace = True)
 
 # create a figure to display multiple figures at once
-fig, axes = plt.subplots(2, 3, figsize=(20,10), sharey=True)
+fig, axes = plt.subplots(4, 2, figsize=(20,10), sharey=True)
 
 # add a title for the figures combined
 fig.suptitle('Figures to show categorical variables in dataset')
@@ -24,10 +24,11 @@ fig.suptitle('Figures to show categorical variables in dataset')
 # create hisplots for al categorical data
 sns.histplot(ax=axes[0, 0], data = data_cat, x = 'gender', hue = 'stroke', multiple="stack")
 sns.histplot(ax=axes[0, 1], data = data_cat, x = 'hypertension', hue = 'stroke', multiple="stack")
-sns.histplot(ax=axes[0, 2], data = data_cat, x = 'heart_disease', hue = 'stroke', multiple="stack")
-sns.histplot(ax=axes[1, 0], data = data_cat, x = 'ever_married', hue = 'stroke', multiple="stack")
-sns.histplot(ax=axes[1, 1], data = data_cat, x = 'work_type', hue = 'stroke', multiple="stack")
-sns.histplot(ax=axes[1, 2], data = data_cat, x = 'residence_type', hue = 'stroke', multiple="stack")
+sns.histplot(ax=axes[1, 0], data = data_cat, x = 'heart_disease', hue = 'stroke', multiple="stack")
+sns.histplot(ax=axes[1, 1], data = data_cat, x = 'ever_married', hue = 'stroke', multiple="stack")
+sns.histplot(ax=axes[2, 0], data = data_cat, x = 'work_type', hue = 'stroke', multiple="stack")
+sns.histplot(ax=axes[2, 1], data = data_cat, x = 'residence_type', hue = 'stroke', multiple="stack")
+sns.histplot(ax=axes[3, 0], data = data_cat, x = 'smoking_status', hue = 'stroke', multiple="stack")
 
 # show the plot
 plt.show()
