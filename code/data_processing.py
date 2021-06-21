@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from scipy.stats import zscore
+import itertools
 
 def prepare_data(path, one_hot = True, binary = True, normalize = True):
 
@@ -145,6 +146,7 @@ def split_data(data, split_size=(0.7, 0.3)):
             stratify = train_labels)
 
         return train_data, test_data, val_data, train_labels, test_labels, val_labels
+
 
 # Run only if script is main document
 if __name__ == '__main__':

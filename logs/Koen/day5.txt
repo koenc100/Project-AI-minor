@@ -6,3 +6,5 @@ Further, looked into data under and over sampling.
 
 
 Afternoon:
+Worked on and finished the oversampling.py
+Made one hot function 
