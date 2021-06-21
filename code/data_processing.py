@@ -45,6 +45,7 @@ def prepare_data(path, one_hot = True, binary = True, normalize = True):
 
     # Create columns with binary values if the binary argument is true
     if binary:
+
         # Replace columns with two categories with binaries
         data = data.replace({'Male': 1, 'Female': 0, 'Urban': 1, 'Rural': 0,
                              'Yes': 1, 'No': 0})
@@ -57,8 +58,7 @@ def prepare_data(path, one_hot = True, binary = True, normalize = True):
         smoking_status = pd.get_dummies(data['smoking_status'])
 
         # Drop not one-hot endcoded columns
-        data = data.drop(['ever_married', 'work_type', 'smoking_status'],
-                           axis=1)
+        data = data.drop(['work_type', 'smoking_status'], axis=1)
 
         # Create new dataframe with one-hot endcoded columns
         data = pd.concat([data, work_type, smoking_status], axis=1)

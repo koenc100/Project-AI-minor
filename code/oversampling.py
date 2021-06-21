@@ -20,7 +20,7 @@ def one_hot(data, columns):
     """
 
     # create new frame list
-    new_frame = [data]
+    new_frame = [0]
 
     # loop over every column in column list
     for column_name in columns:
@@ -34,11 +34,16 @@ def one_hot(data, columns):
     # Drop not one-hot endcoded columns
     data = data.drop(columns, axis=1)
 
+    new_frame[0] = data
+
     # Create new dataframe with one-hot endcoded columns
     data = pd.concat(new_frame, axis=1)
 
     # Rename the unknown smoking status column
     data = data.rename(columns={'Unknown':'unknown_smoking_status'})
+
+    # Clean the column names of uppercase letters and spaces
+    data.columns = data.columns.str.lower().str.replace(' ','_')
 
     return data
 
@@ -63,8 +68,6 @@ def smote_loop(data, labels, n_features, start, stop, step):
     list_labels = []
     list_ratio = []
 
-    print('data', data.shape, 'labels', labels.shape)
-
     for i in np.arange(start, stop, step):
 
         # Make smote object: sample stagagy = minority / majority
@@ -73,20 +76,14 @@ def smote_loop(data, labels, n_features, start, stop, step):
         # create resampled data and labels
         train_data_res_t, train_labels_res = smote_nc.fit_resample(data, labels)
 
-        print('data_2', train_data_res_t.shape)
-
         # encode one hot
         train_data_res = one_hot(train_data_res_t, ['work_type', 'smoking_status'])
-
-        print('data_2', train_data_res.shape)
 
         # list with sampled data and  labels
         list_data.append(train_data_res)
         list_labels.append(train_labels_res)
         list_ratio.append(i)
 
-        # shape list_data = 19 columns
-        
     return list_data, list_labels, list_ratio
 
 
@@ -99,4 +96,4 @@ if __name__ == '__main__':
     # Define categorial features
     n_features = np.array([True, False, True, True, True, True,True, False, False, True])
 
-    smote_test = smote_loop(train_data, train_labels, n_features, 0.2, 1.1, 0.2)
+    list_data, list_labels, list_ratio = smote_loop(train_data, train_labels, n_features, 0.2, 1.1, 0.2)
