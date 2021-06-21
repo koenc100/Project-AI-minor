@@ -1,0 +1,9 @@
+21/06/2021 log Koen Ceton:
+
+Morning:
+Make oversampling plots
+work on paper
+
+
+Afternoon:
+Write in paper on neural network 
