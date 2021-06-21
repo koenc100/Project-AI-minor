@@ -1,0 +1,7 @@
+JJ. Dijkmans
+
+Log day 6.
+In the morning I have been working with Koen on the implementation of the data augmentation (oversampling) step.
+Unfortunately we had some bugs when combining our code, which took a while. After a lot of merging conflicts were fixed, we could continue with our neural network optimization and making some initial plots to find optimal parameters.
+
+During the afternoon I have written the report on the deep neural network (actual model.)
