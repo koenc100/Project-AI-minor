@@ -1,0 +1,11 @@
+22-06-2021
+
+Mijn activiteiten:
+
+- ratios categorische data en verbeterd plot aan verslag toegevoegd
+- pared programming met Dominique voor verbeteringen decision tree
+(zoals toevoegen aangepaste weights)
+- neural network code doorlezen en verbeteren met Dominique
+
+goeie link:
+https://machinelearningmastery.com/cost-sensitive-decision-trees-for-imbalanced-classification/

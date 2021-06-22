@@ -17,6 +17,8 @@ data_cat['stroke'].replace(to_replace = (0, 1), value = ('no stroke', 'stroke'),
 
 # create a figure to display multiple figures at once
 fig, axes = plt.subplots(4, 2, figsize=(20,10), sharey=True)
+# fig.tight_layout()
+fig.subplots_adjust(left=None, bottom=None, right=None, top=0.95, wspace=None, hspace=0.25)
 
 # add a title for the figures combined
 fig.suptitle('Figures to show categorical variables in dataset')
