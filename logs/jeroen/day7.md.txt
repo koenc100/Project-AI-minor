@@ -1,0 +1,10 @@
+JJ. Dijkmans
+
+Log day 7.
+Morning: We had a morning discussion on how to proceed on optimizing or models.
+I started on working on different model architectures to find some optimal values for this too. This still is a work in progress, that needs finetuning.
+After that, I worked on the code design for the neural network model after which we had a round of checking each others code for design and readability.
+
+
+Afternoon. We had a feedback moment with Tim, who gave a lot of small details and some large points in the report.
+The rest of the afternoon we worked on implementing those points.
