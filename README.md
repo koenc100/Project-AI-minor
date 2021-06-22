@@ -21,7 +21,7 @@ There are also several python files, which contain basic functions we use in sev
 * tensorflow (optional)
 * imbalanced-learn (0.8.0)
 
-
+`conda install -c conda-forge imbalanced-learn`
 
 ## Description / Example
 The model classifies a sample from a dataset as one of two binary classes, based on various categorical (one-hot encoded) and continuous features, by combining the prediction of a decision tree and a neural network. Model parameters are specifically set for imbalanced data, so data where one of two output classes is rare (about 5% of cases). 
