@@ -23,3 +23,15 @@ def get_metrics(true_labels, predictions, verbose=False):
         print('[["True Negative", "False Positive"] \n ["False Negative", "True Positive"]] \n')
 
     return accuracy, balanced_accuracy
+
+def get_confusion_metrics(true_labels, predictions):
+    """
+    Sometimes only confusion matrix, sensitivity and specificity are needed.
+    In order to save computational time and return only the relevant metrics,
+    this function is preferred over get_metrics.
+    """
+    conmat = confusion_matrix(true_labels, predictions)
+    sensitivity = conmat[1,1] / sum(conmat[1,:])
+    specificity = conmat[0,0] / sum(conmat[0,:])
+    
+    return conmat, sensitivity, specificity
