@@ -1,0 +1,8 @@
+23-06-2021
+
+Ik heb er heel lang over gedaan om het oversampling te laten werken in 
+k-Nearest Neighbors. Dat kwam onder andere doordat ik er dingen in aangepast heb
+om het te laten werken voor meer data (zoals het niet hoeven toe te voegen
+welke variablen categorisch zijn). Het was wel leuk om te zien dat dit 
+resultaat had uiteindelijk. Ik heb ook wat nieuwe plotjes gemaakt en een
+heel klein begin gemaakt aan k-NN in het verslag. 
