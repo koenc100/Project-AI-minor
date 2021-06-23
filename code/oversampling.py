@@ -31,6 +31,17 @@ def smote_loop(data, labels, start, stop, step):
     list_labels = []
     list_ratio = []
 
+    # Turn of the SetCopyWarning because it keeps showing up but not in another
+    # file with the exact same code
+    pd.set_option('mode.chained_assignment', None)
+
+    # Replace 1 and 0 for hypertension values with actual names for the
+    # classes for one hot encoding later
+    data['hypertension'].replace(to_replace = (0, 1), value = ('normal',
+                                 'hypertension'), inplace = True)
+    data['heart_disease'].replace(to_replace = (0, 1), value = ('healthy',
+                                   'heart disease'), inplace = True)
+
     # Create a list of booleans where true means column contains categorical
     # data
     n_boolean = [len(data[column].unique()) < 10 for column in data.columns]
@@ -59,16 +70,14 @@ def smote_loop(data, labels, start, stop, step):
 if __name__ == '__main__':
 
     # Load the normalized data without one-hot encoding
-    data = prepare_data('healthcare-dataset-stroke-data.csv', one_hot = False,
+    data__ = prepare_data('healthcare-dataset-stroke-data.csv', one_hot = False,
                          binary = False, normalize = True)
 
     # Split the data into training and testing data
-    train_data, test_data, train_labels, test_labels = split_data(data,
-    split_size=(0.999, 0.001))
-
-    # Define categorial features
-    n_features = np.array([True, False, True, True, True, True, True, False,
-                           False, True])
+    train_data, test_data, train_labels, test_labels = split_data(data__,
+                                                                    split_size=
+                                                                    (0.999, 0.001)
+                                                                    )
 
     # Create the oversampled data with its labels and ratios
     list_data, list_labels, list_ratio = smote_loop(train_data, train_labels,
