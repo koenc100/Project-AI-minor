@@ -31,16 +31,16 @@ def smote_loop(data, labels, start, stop, step):
     list_labels = []
     list_ratio = []
 
-    # Turn of the SetCopyWarning because it keeps showing up but not in another
-    # file with the exact same code
-    pd.set_option('mode.chained_assignment', None)
-
-    # Replace 1 and 0 for hypertension values with actual names for the
-    # classes for one hot encoding later
-    data['hypertension'].replace(to_replace = (0, 1), value = ('normal',
-                                 'hypertension'), inplace = True)
-    data['heart_disease'].replace(to_replace = (0, 1), value = ('healthy',
-                                   'heart disease'), inplace = True)
+    # # Turn of the SetCopyWarning because it keeps showing up but not in another
+    # # file with the exact same code
+    # pd.set_option('mode.chained_assignment', None)
+    #
+    # # Replace 1 and 0 for hypertension values with actual names for the
+    # # classes for one hot encoding later
+    # data['hypertension'].replace(to_replace = (0, 1), value = ('normal',
+    #                              'hypertension'), inplace = True)
+    # data['heart_disease'].replace(to_replace = (0, 1), value = ('healthy',
+    #                                'heart disease'), inplace = True)
 
     # Create a list of booleans where true means column contains categorical
     # data

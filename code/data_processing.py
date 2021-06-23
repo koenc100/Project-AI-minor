@@ -20,6 +20,14 @@ def one_hot_encode(data):
     OUTPUT:
     data:   A Pandas dataframe with the categorical values one-hot encoded
     """
+
+    # Replace 1 and 0 for hypertension values with actual names for the
+    # classes for one hot encoding
+    data['hypertension'].replace(to_replace = (0, 1), value = ('normal',
+                                 'hypertension'), inplace = True)
+    data['heart_disease'].replace(to_replace = (0, 1), value = ('healthy',
+                                   'heart disease'), inplace = True)
+
     # Loop over every feature in the dataset (=the columns)
     for feature in list(data.columns):
 
@@ -38,6 +46,10 @@ def one_hot_encode(data):
 
             # Add the new dummy one-hot encoded columns to the dataset
             data = pd.concat([data, dummies], axis = 1)
+
+    # Rename the unknown smoking status column to something more clear
+    data = data.rename(columns={'Unknown':'unknown_smoking_status'})
+
 
     return data
 
@@ -87,18 +99,8 @@ def prepare_data(path, one_hot = True, binary = False, normalize = True):
     # Change categorical columns to one-hot encoded columns
     if one_hot:
 
-        # Change names for categorical hypertension and heart disease columns
-        # from 0 and 1 to meaningful names for the one hot encoding
-        data['hypertension'].replace(to_replace = (0, 1), value = ('normal',
-                                     'hypertension'), inplace = True)
-        data['heart_disease'].replace(to_replace = (0, 1), value = ('healthy',
-                                       'heart disease'), inplace = True)
-
         # One hot encode the data with the function
         data = one_hot_encode(data)
-
-        # Rename the unknown smoking status column to something more clear
-        data = data.rename(columns={'Unknown':'unknown_smoking_status'})
 
     # Clean the column names of uppercase letters and spaces
     data.columns = data.columns.str.lower().str.replace(' ','_')
