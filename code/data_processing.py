@@ -21,6 +21,10 @@ def one_hot_encode(data):
     data:   A Pandas dataframe with the categorical values one-hot encoded
     """
 
+    # Turn CopyWarning off because there is no problem but it keeps showing
+    # up
+    pd.set_option('mode.chained_assignment', None)
+    
     # Replace 1 and 0 for hypertension values with actual names for the
     # classes for one hot encoding
     data['hypertension'].replace(to_replace = (0, 1), value = ('normal',
