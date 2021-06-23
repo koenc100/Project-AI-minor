@@ -66,10 +66,6 @@ if __name__ == '__main__':
     train_data, test_data, train_labels, test_labels = split_data(data,
     split_size=(0.999, 0.001))
 
-    # Define categorial features
-    n_features = np.array([True, False, True, True, True, True, True, False,
-                           False, True])
-
     # Create the oversampled data with its labels and ratios
     list_data, list_labels, list_ratio = smote_loop(train_data, train_labels,
                                                     0.2, 1.1, 0.2)
