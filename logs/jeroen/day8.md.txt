@@ -1,0 +1,14 @@
+JJ. Dijkmans
+
+Log day 8:
+Morning:
+Today I started by rerunning some of the base models since there seemed to be still some mistakes in the report for the baseline model data.
+I worked on some more text of both the report and the DNN that had to be added.
+
+Afternoon:
+I worked on optimizing settings for many of the different parameters and stored the results in an excel file, in search of a better balanced accuracy of the model.
+I also implemented a random-forest like way to stack different deep neural networks,
+each one trained on a different set of the training data (where each time all stroke data were used).
+In some way this can be seen as an undersampling method for the non-stroke data.
+Since we have many hyperparameters to tweak now, all that is left to do for the neural network is to optimize the parameters.
+
