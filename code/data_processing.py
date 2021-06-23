@@ -41,7 +41,7 @@ def one_hot_encode(data):
 
     return data
 
-def prepare_data(path, one_hot = True, binary = True, normalize = True):
+def prepare_data(path, one_hot = True, binary = False, normalize = True):
 
     """
     This function cleans the stroke csv dataset.
@@ -51,7 +51,7 @@ def prepare_data(path, one_hot = True, binary = True, normalize = True):
     (path) and a boolean for if data should be one-hot-encoded (one_hot, default
     True), a boolean for if features with 2 categories should be changed
     to binary values (e.g. gender 0 or 1, instead of 'male' and 'female')
-    (binary, default True) and a boolean for if the numeric data should be
+    (binary, default False) and a boolean for if the numeric data should be
     normalized using z-score (normalized, default True).
     """
 
