@@ -1,4 +1,6 @@
-# Visualize the categorical data
+# Visualize the categorical data and compute ratios 
+# 22-06-2021
+# Jana Bersee, Koen Ceton, Jeroen Dijkmans, Dominique Weltevreden
 
 import pandas as pd
 import seaborn as sns

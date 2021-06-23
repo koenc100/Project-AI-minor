@@ -1,53 +1,16 @@
-# Oversampling code
+# Code to create oversampled data
+# 22-06-2021
+# Jana Bersee, Koen Ceton, Jeroen Dijkmans, Dominique Weltevreden
 
-#import imblearn
-#from imblearn.over_sampling import RandomOverSampler, SMOTENC
 import pandas as pd
-from data_processing import prepare_data, split_data
-import seaborn as sns
+from data_processing import prepare_data, split_data, one_hot_encode
 import matplotlib.pyplot as plt
 import numpy as np
 import scipy
 import sklearn
 from imblearn.over_sampling import RandomOverSampler, SMOTENC
 
-def one_hot(data, columns):
-
-    """
-    Returns pandas dataframe with one hot encoded columns
-    data: data used
-    columns: list of strings of names of columns to one hot encode
-    """
-
-    # create new frame list
-    new_frame = [0]
-
-    # loop over every column in column list
-    for column_name in columns:
-
-        # Create dummies objects for one-hot encoded columns
-        column_dummie = pd.get_dummies(data[column_name])
-
-        # append to list
-        new_frame.append(column_dummie)
-
-    # Drop not one-hot endcoded columns
-    data = data.drop(columns, axis=1)
-
-    new_frame[0] = data
-
-    # Create new dataframe with one-hot endcoded columns
-    data = pd.concat(new_frame, axis=1)
-
-    # Rename the unknown smoking status column
-    data = data.rename(columns={'Unknown':'unknown_smoking_status'})
-
-    # Clean the column names of uppercase letters and spaces
-    data.columns = data.columns.str.lower().str.replace(' ','_')
-
-    return data
-
-def smote_loop(data, labels, n_features, start, stop, step):
+def smote_loop(data, labels, start, stop, step):
 
     """
     Function returns 3 lists:
@@ -55,31 +18,37 @@ def smote_loop(data, labels, n_features, start, stop, step):
     list_labels: list of split labels
     list_ratio: list of the ratios split on
 
-    parameters:
+    Parameters:
     data: training data set
     labels: corresponding labels
-    n_features: numpy array with categorial features
     start: at what value do you want the ratio to start
     stop: at what value do you want the ratio to stop
     step: the step size
     """
 
+    # Create empty list to return later
     list_data = []
     list_labels = []
     list_ratio = []
 
+    # Create a list of booleans where true means column contains categorical
+    # data
+    n_boolean = [len(data[column].unique()) < 3 for column in data.columns]
+
+    # Loop over numbers in the given range
     for i in np.arange(start, stop, step):
 
-        # Make smote object: sample stagagy = minority / majority
-        smote_nc = SMOTENC(categorical_features = n_features, sampling_strategy = i)
+        # Make smote object: sample strategy = minority / majority
+        smote_nc = SMOTENC(categorical_features = n_boolean,
+                           sampling_strategy = i)
 
-        # create resampled data and labels
+        # Create resampled data and labels
         train_data_res_t, train_labels_res = smote_nc.fit_resample(data, labels)
 
-        # encode one hot
-        train_data_res = one_hot(train_data_res_t, ['work_type', 'smoking_status'])
+        # Encode one hot
+        train_data_res = one_hot_encode(train_data_res_t)
 
-        # list with sampled data and  labels
+        # Append lists with sampled data and labels
         list_data.append(train_data_res)
         list_labels.append(train_labels_res)
         list_ratio.append(i)
@@ -89,11 +58,18 @@ def smote_loop(data, labels, n_features, start, stop, step):
 
 if __name__ == '__main__':
 
-    data = prepare_data('healthcare-dataset-stroke-data.csv', one_hot = False, binary = True, normalize = True)
+    # Load the normalized data without one-hot encoding
+    data = prepare_data('healthcare-dataset-stroke-data.csv', one_hot = True,
+                         binary = False, normalize = True)
 
-    train_data, test_data, train_labels, test_labels, = split_data(data, split_size=(0.999, 0.001))
+    # Split the data into training and testing data
+    train_data, test_data, train_labels, test_labels = split_data(data,
+    split_size=(0.999, 0.001))
 
     # Define categorial features
-    n_features = np.array([True, False, True, True, True, True,True, False, False, True])
+    n_features = np.array([True, False, True, True, True, True, True, False,
+                           False, True])
 
-    list_data, list_labels, list_ratio = smote_loop(train_data, train_labels, n_features, 0.2, 1.1, 0.2)
+    # Create the oversampled data with its labels and ratios
+    list_data, list_labels, list_ratio = smote_loop(train_data, train_labels,
+                                                    0.2, 1.1, 0.2)
