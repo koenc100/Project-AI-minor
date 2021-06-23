@@ -33,7 +33,7 @@ def smote_loop(data, labels, start, stop, step):
 
     # Create a list of booleans where true means column contains categorical
     # data
-    n_boolean = [len(data[column].unique()) < 3 for column in data.columns]
+    n_boolean = [len(data[column].unique()) < 10 for column in data.columns]
 
     # Loop over numbers in the given range
     for i in np.arange(start, stop, step):
@@ -59,7 +59,7 @@ def smote_loop(data, labels, start, stop, step):
 if __name__ == '__main__':
 
     # Load the normalized data without one-hot encoding
-    data = prepare_data('healthcare-dataset-stroke-data.csv', one_hot = True,
+    data = prepare_data('healthcare-dataset-stroke-data.csv', one_hot = False,
                          binary = False, normalize = True)
 
     # Split the data into training and testing data
