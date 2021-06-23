@@ -10,6 +10,37 @@ from sklearn.model_selection import train_test_split
 from scipy.stats import zscore
 import itertools
 
+def one_hot_encode(data):
+    """
+    This function one-hot encodes categorical features in a dataset.
+
+    INPUT:
+    data:   A Pandas dataframe
+
+    OUTPUT:
+    data:   A Pandas dataframe with the categorical values one-hot encoded
+    """
+    # Loop over every feature in the dataset (=the columns)
+    for feature in list(data.columns):
+
+        # Get the feature column from the dataframe
+        current_feature = data[feature]
+
+        # Find the categorical features, by seeing if the column has less
+        # than 10 unique values. Do not one-hot encode the outcome variable.
+        if (len(np.unique(current_feature)) < 10) & (feature != "stroke"):
+
+            # Get dummies for one-hot encoding
+            dummies = pd.get_dummies(current_feature)
+
+            # Drop the old, not one-hot encoded column
+            data = data.drop(feature, axis = 1)
+
+            # Add the new dummy one-hot encoded columns to the dataset
+            data = pd.concat([data, dummies], axis = 1)
+
+    return data
+
 def prepare_data(path, one_hot = True, binary = True, normalize = True):
 
     """
@@ -54,22 +85,19 @@ def prepare_data(path, one_hot = True, binary = True, normalize = True):
                              'Yes': 1, 'No': 0})
 
     # Change categorical columns to one-hot encoded columns
-    # Change names for categorical hypertension and heart disease columns from
-    # 0 and 1 to meaningful names
-    data['hypertension'].replace(to_replace = (0, 1), value = ('normal',
-                                 'hypertension'), inplace = True)
-    data['heart_disease'].replace(to_replace = (0, 1), value = ('healthy',
-                                   'heart disease'), inplace = True)
-
     if one_hot:
-        for feature in list(data.columns):
-            current_feature = data[feature]
-            if (len(np.unique(current_feature)) < 10) & (feature != "stroke"):
-                dummies = pd.get_dummies(current_feature)
-                data = data.drop(feature, axis = 1)
-                data = pd.concat([data, dummies], axis = 1)
 
-        # Rename the unknown smoking status column
+        # Change names for categorical hypertension and heart disease columns
+        # from 0 and 1 to meaningful names for the one hot encoding
+        data['hypertension'].replace(to_replace = (0, 1), value = ('normal',
+                                     'hypertension'), inplace = True)
+        data['heart_disease'].replace(to_replace = (0, 1), value = ('healthy',
+                                       'heart disease'), inplace = True)
+
+        # One hot encode the data with the function
+        data = one_hot_encode(data)
+
+        # Rename the unknown smoking status column to something more clear
         data = data.rename(columns={'Unknown':'unknown_smoking_status'})
 
     # Clean the column names of uppercase letters and spaces
@@ -160,16 +188,16 @@ if __name__ == '__main__':
     # Prepare the data
     data = prepare_data('healthcare-dataset-stroke-data.csv')
 
-    print(data.info())
-    print(data.head())
+    #print(data.info())
+    #print(data.head())
     # Split the data
-    # train_data, test_data, val_data, train_labels, test_labels, val_labels = split_data(data,
-    # split_size=(0.6, 0.2, 0.2))
-    #
-    # # Print shapes of training and testing data
-    # print(f'\nShapes:\nTotal data: {data.shape}\nTrain data: '
-    # f'{train_data.shape}\nTest data: {test_data.shape}\nTrain labels: '
-    # f'{train_labels.shape}\nTest labels: {test_labels.shape}\n')
+    train_data, test_data, val_data, train_labels, test_labels, val_labels = split_data(data,
+    split_size=(0.6, 0.2, 0.2))
+
+    # Print shapes of training and testing data
+    print(f'\nShapes:\nTotal data: {data.shape}\nTrain data: '
+    f'{train_data.shape}\nTest data: {test_data.shape}\nTrain labels: '
+    f'{train_labels.shape}\nTest labels: {test_labels.shape}\n')
 
     # Print info
-    #print(train_data.info())
+    print(train_data.info())
