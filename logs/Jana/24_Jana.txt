@@ -1,0 +1,5 @@
+24-06-2021
+
+Vandaag heb ik de introductie geschreven en de notebook voor het combined 
+model gemaakt. Ook heb ik nog wat laatste aanpassingen aan kNN gedaan en
+een deel van kNN en het combined model in het verslag geschreven. 
