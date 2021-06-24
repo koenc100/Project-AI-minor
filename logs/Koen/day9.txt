@@ -1,0 +1,10 @@
+24/06/2021 log Koen Ceton:
+
+Morning:
+Optimize neural network
+Fix the layout
+
+Afternoon:
+Make final optimizations 
+Last check, make appendix, front page, label figures
+
