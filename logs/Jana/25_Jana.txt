@@ -1,0 +1,6 @@
+25-06-2021
+
+- checked readme
+- tried to create a neural network based on predictions of 3 models
+- read report
+- added metrics for a single decision tree
