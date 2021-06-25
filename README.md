@@ -19,8 +19,8 @@ This project contains multiple notebooks with different pipelines for predicting
 * matplotlib (>=3.3.2)
 * seaborn (>=0.11.1)
 * scikit-learn (sklearn)(>=0.23)
-* keras 2 (optional)
-* tensorflow (optional)
+* keras (>=1.0.8)
+* tensorflow (>=2.1.0)
 
 #### packages not included in ProgLab:
 * imbalanced-learn (0.8.0)
