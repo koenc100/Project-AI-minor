@@ -25,7 +25,7 @@ This project contains multiple notebooks with different pipelines for predicting
 #### packages not included in ProgLab:
 * imbalanced-learn (0.8.0)
 
-To install, run the following command in a terminal:
+To install the not included package, run the following command in a terminal:
 
 `conda install -c conda-forge imbalanced-learn`
 
