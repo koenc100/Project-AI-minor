@@ -27,10 +27,10 @@ This project contains multiple notebooks with different pipelines for predicting
 
 To install, run the following command in a terminal:
 
-`conda install -c conda-forge imbalanced-learn`)
+`conda install -c conda-forge imbalanced-learn`
 
 * nbimporter
-To install, run in notebook (code included in Combined_model.ipynb):
+To install, run the following command in a notebook (code included in Combined_model.ipynb):
 
 `pip install nbimporter` 
 
