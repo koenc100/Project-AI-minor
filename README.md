@@ -30,7 +30,8 @@ To install, run the following command in a terminal:
 `conda install -c conda-forge imbalanced-learn`
 
 * nbimporter
-To install, run the following command in a notebook (code included in Combined_model.ipynb):
+Package for combining functions from other notebook, used in combined model (code/Combined_model.ipynb)
+To install, run the following command in notebook (included in data/Combined_model.ipynb):
 
 `pip install nbimporter` 
 
