@@ -30,7 +30,8 @@ To install, run the following command in a terminal:
 `conda install -c conda-forge imbalanced-learn`
 
 * nbimporter
-To install, run the following command in a notebook (code included in Combined_model.ipynb):
+Package for combining functions from other notebook, used in combined model (code/Combined_model.ipynb)
+To install, run the following command in notebook (included in data/Combined_model.ipynb):
 
 `pip install nbimporter` 
 
@@ -42,9 +43,7 @@ This repository contains the following folders:
 * /logs: a folder that holds a folder for each of the group members’ daily log files.
 * /docs: a folder holding the pdf of our report
   * /docs/images: a folder within /docs that holds a few images in the report. As we hand in a pdf, we don't actively use this folder.
-* /code: a folder holding all code in notebooks. including one separate notebook for every model that we use for classification in our project, as well as the combined models.
-There are also several python files, which contain basic functions we use in several of the notebooks.
-  * /code/visualization: a folder containing all code for data visualization to explore the raw dataset.
+* /code: a folder holding all code in notebooks. This includes one separate notebook for every model that we use for classification in our project, as well as the combined models.There are also several python files, which contain basic functions we use in several of the notebooks. Besides, there are two functions for  folder containing all code for data visualization to explore the raw dataset.
 
 #### model notebooks:
 The models classify a sample from a dataset as one of two binary classes, based on various categorical (one-hot encoded) and continuous features, by combining the prediction of a decision tree and a neural network. Model parameters are specifically set for imbalanced data, so data where one of two output classes is rare (about 5% of cases).
@@ -67,11 +66,13 @@ Run notebooks in jupyter or other notebook software. Additional information on h
 These functions are imported within the model notebooks.
 
 #### raw data visualization:
-* /code/visualization/
+* /code
   * data_visual.py: This file visualizes the numeric data of the stroke dataset.
   * data_visual_cat.py: This file visualizes the numeric data of the stroke dataset.
 
-Run in terminal using: `python file_name.py`
+Run in terminal using: 
+
+`python file_name.py`
 
 ## Authors:
 * Jana Bersee
