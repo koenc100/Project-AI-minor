@@ -75,13 +75,10 @@ def proportion(data, column_name):
         print(f'Ratio of subgroup {item}: {round(ratio_item, 5)}')
 
 # Run functions on every column of the categorical data
-for column in data_cat.column:
-    proportion(data_cat, column)
-
-# proportion(data_cat, 'gender')
-# proportion(data_cat, 'hypertension')
-# proportion(data_cat, 'heart_disease')
-# proportion(data_cat, 'ever_married')
-# proportion(data_cat, 'work_type')
-# proportion(data_cat, 'residence_type')
-# proportion(data_cat, 'smoking_status')
+proportion(data_cat, 'gender')
+proportion(data_cat, 'hypertension')
+proportion(data_cat, 'heart_disease')
+proportion(data_cat, 'ever_married')
+proportion(data_cat, 'work_type')
+proportion(data_cat, 'residence_type')
+proportion(data_cat, 'smoking_status')
