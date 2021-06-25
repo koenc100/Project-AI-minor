@@ -41,8 +41,7 @@ To install, run the following command in notebook (included in data/Combined_mod
 This repository contains the following folders:
 
 * /logs: a folder that holds a folder for each of the group members’ daily log files.
-* /docs: a folder holding the pdf of our report
-  * /docs/images: a folder within /docs that holds a few images in the report. As we hand in a pdf, we don't actively use this folder.
+* /docs: a folder holding the pdf of our report.
 * /code: a folder holding all code in notebooks. This includes one separate notebook for every model that we use for classification in our project, as well as the combined models.There are also several python files, which contain basic functions we use in several of the notebooks. Besides, there are two functions for  folder containing all code for data visualization to explore the raw dataset.
 
 #### model notebooks:
