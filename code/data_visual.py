@@ -24,7 +24,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Prepare the data: One-hot encoding, remove NaN, simplify column names
-data = prepare_data('healthcare-dataset-stroke-data.csv')
+# Do not normalize data for visualization
+data = prepare_data('healthcare-dataset-stroke-data.csv', normalize = False)
 
 # Create subplot
 fig, axes = plt.subplots(2, 3, figsize=(20,10))
