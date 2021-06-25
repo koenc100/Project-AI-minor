@@ -5,5 +5,7 @@ Correct the feedback
 clean up code and the paper
 
 Afternoon:
+Final improvements paper and documentation
+Final improvements combined model
 
 
