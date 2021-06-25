@@ -1,13 +1,8 @@
 # File to visualize the dataset
 
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-from data_processing import prepare_data
-
 """
 DESCRIPTION:
-This file visualizes the nummeric data of the stroke Dataset.
+This file visualizes the numeric data of the stroke Dataset.
 In the upper three plots, the age, average glucose level and bmi are plotted against the strokes occured.
 In the 3 plots beneath, the age, average glucose level and bmi are plotted cumulatively, against its density.
 
