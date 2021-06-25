@@ -43,7 +43,7 @@ This repository contains the following folders:
 * /logs: a folder that holds a folder for each of the group members’ daily log files.
 * /docs: a folder holding the pdf of our report
   * /docs/images: a folder within /docs that holds a few images in the report. As we hand in a pdf, we don't actively use this folder.
-* /code: a folder holding all code in notebooks. including one separate notebook for every model that we use for classification in our project, as well as the combined models.There are also several python files, which contain basic functions we use in several of the notebooks. Besides, there are two functions for  folder containing all code for data visualization to explore the raw dataset.
+* /code: a folder holding all code in notebooks. This includes one separate notebook for every model that we use for classification in our project, as well as the combined models.There are also several python files, which contain basic functions we use in several of the notebooks. Besides, there are two functions for  folder containing all code for data visualization to explore the raw dataset.
 
 #### model notebooks:
 The models classify a sample from a dataset as one of two binary classes, based on various categorical (one-hot encoded) and continuous features, by combining the prediction of a decision tree and a neural network. Model parameters are specifically set for imbalanced data, so data where one of two output classes is rare (about 5% of cases).
