@@ -9,7 +9,7 @@ This project contains multiple notebooks with different pipelines for predicting
 
 ### Required libraries/programs:
 
-#### packages included in ProgLab:
+#### Packages included in ProgLab:
 * python (>=3.6)
 * numpy (>=1.13.3)
 * pandas (>=1.2
@@ -22,15 +22,15 @@ This project contains multiple notebooks with different pipelines for predicting
 * keras (>=1.0.8)
 * tensorflow (>=2.1.0)
 
-#### packages not included in ProgLab:
+#### Packages not included in ProgLab:
 * imbalanced-learn (0.8.0)
 
-To install, run the following command in a terminal:
+To install the not included package, run the following command in a terminal:
 
 `conda install -c conda-forge imbalanced-learn`
 
-* nbimporter
-Package for combining functions from other notebook, used in combined model (code/Combined_model.ipynb)
+* nbimporter: Package for combining functions from other notebook, used in combined model (code/Combined_model.ipynb)
+
 To install, run the following command in notebook (included in data/Combined_model.ipynb):
 
 `pip install nbimporter` 
@@ -42,9 +42,9 @@ This repository contains the following folders:
 
 * /logs: a folder that holds a folder for each of the group members’ daily log files.
 * /docs: a folder holding the pdf of our report.
-* /code: a folder holding all code in notebooks. This includes one separate notebook for every model that we use for classification in our project, as well as the combined models.There are also several python files, which contain basic functions we use in several of the notebooks. Besides, there are two functions for  folder containing all code for data visualization to explore the raw dataset.
+* /code: a folder holding all code in notebooks. This includes one separate notebook for every model that we use for classification in our project, as well as a notebook for the combined models.There are also several python files, which contain basic functions we use in several of the notebooks. Besides, there are two visualization functions containing all code for data visualization to explore the raw dataset.
 
-#### model notebooks:
+#### Model notebooks:
 The models classify a sample from a dataset as one of two binary classes, based on various categorical (one-hot encoded) and continuous features, by combining the prediction of a decision tree and a neural network. Model parameters are specifically set for imbalanced data, so data where one of two output classes is rare (about 5% of cases).
 
 * /code
@@ -56,7 +56,7 @@ The models classify a sample from a dataset as one of two binary classes, based 
 
 Run notebooks in jupyter or other notebook software. Additional information on how to use the different functions in these notebooks can be found in the function descriptions and markdown cells contained in the notebooks. Example code for running and optimizing the different models is also provided there.
 
-#### python files containing custom functions used in notebook.
+#### Python files containing custom functions used in notebook.
 * /code
   * data_processing.py: file containing functions for data preprocessing.
   * helper_functions.py: file containing functions to retrieve metrics for model performance evaluation.
@@ -64,10 +64,10 @@ Run notebooks in jupyter or other notebook software. Additional information on h
 
 These functions are imported within the model notebooks.
 
-#### raw data visualization:
+#### Raw data visualization:
 * /code
   * data_visual.py: This file visualizes the numeric data of the stroke dataset.
-  * data_visual_cat.py: This file visualizes the numeric data of the stroke dataset.
+  * data_visual_cat.py: This file visualizes the categoric data of the stroke dataset.
 
 Run in terminal using: 
 

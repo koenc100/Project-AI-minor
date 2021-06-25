@@ -1,8 +1,0 @@
-JJ. Dijkmans
-
-Log day 9:
-Today we basically finished the project. 
-First we tried many different combinations of values for our Deep Neural network.
-Then we decided which was the best architecture to use and further tweaked the optimization parameters.
-Much time went in writing the report and creating informative visualizations of the data.
-Finally, we also stacked all the three models we built and got the best accuracy so far using that :).
